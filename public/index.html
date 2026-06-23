@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestor Multimedia NoSQL</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div>
+        <p>MongoDB Atlas + multimedia</p>
+        <h1>Galeria multimedia</h1>
+      </div>
+      <input id="busqueda" type="search" placeholder="Buscar por titulo, descripcion o tag">
+    </header>
+
+    <section class="workspace">
+      <form id="formMultimedia" class="panel" enctype="multipart/form-data">
+        <h2 id="tituloFormulario">Subir elemento</h2>
+        <input type="hidden" id="elementoId">
+
+        <label>Titulo
+          <input type="text" id="titulo" name="titulo" required>
+        </label>
+
+        <label>Descripcion
+          <textarea id="descripcion" name="descripcion" rows="4"></textarea>
+        </label>
+
+        <label>Tags separados por coma
+          <input type="text" id="tags" name="tags" placeholder="musica, paisaje, escuela">
+        </label>
+
+        <label>Imagen
+          <input type="file" id="imagen" name="imagen" accept="image/*">
+        </label>
+
+        <label>Audio
+          <input type="file" id="audio" name="audio" accept="audio/*">
+        </label>
+
+        <div class="actions">
+          <button type="submit">Guardar</button>
+          <button type="button" id="cancelar">Cancelar</button>
+        </div>
+      </form>
+
+      <section class="panel">
+        <h2>Elementos guardados</h2>
+        <div id="galeria" class="gallery"></div>
+      </section>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
