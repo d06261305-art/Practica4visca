@@ -76,15 +76,23 @@ form.addEventListener("submit", async (event) => {
   const id = elementoId.value;
   const datos = new FormData(form);
 
-  const res = await fetch(id ? `${API_URL}/${id}` : API_URL, {
-    method: id ? "PUT" : "POST",
-    body: datos
-  });
+  const respuesta = await fetch(
+    id ? `${API_URL}/${id}` : API_URL,
+    {
+      method: id ? "PUT" : "POST",
+      body: datos
+    }
+  );
 
-  const resultado = await res.json();
+  const resultado = await respuesta.json();
 
-  console.log("STATUS:", res.status);
+  console.log("STATUS:", respuesta.status);
   console.log("RESPUESTA:", resultado);
+
+  if (!respuesta.ok) {
+    alert(resultado.detalle || resultado.mensaje);
+    return;
+  }
 
   limpiarFormulario();
   cargarGaleria();
