@@ -75,10 +75,16 @@ form.addEventListener("submit", async (event) => {
 
   const id = elementoId.value;
   const datos = new FormData(form);
-  await fetch(id ? `${API_URL}/${id}` : API_URL, {
+
+  const res = await fetch(id ? `${API_URL}/${id}` : API_URL, {
     method: id ? "PUT" : "POST",
     body: datos
   });
+
+  const resultado = await res.json();
+
+  console.log("STATUS:", res.status);
+  console.log("RESPUESTA:", resultado);
 
   limpiarFormulario();
   cargarGaleria();
